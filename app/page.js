@@ -8,7 +8,10 @@ export default function HomePage() {
          
               <h1 className="text-4xl font-mono font-bold text-black mb-5">CPRG 306: Web Development-2 Assignments</h1>
               <Link href="./week-2" className="bg-orange-300 text-black font-bold py-3 px-6 rounded hover: text-orange-900 transition duration-200">
-                  Click here to see my Project!
+                  Click here to see my Project of week-2!
+              </Link>
+              <Link href="./week-3" className="bg-orange-300 text-black font-bold py-3 px-6 rounded hover: text-orange-900 transition duration-200">
+                  Click here to see my Project of week-3!
               </Link>
           
       </main>
