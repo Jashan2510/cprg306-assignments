@@ -43,6 +43,11 @@ export default function Page() {
             Click here to see my Project part 7!
           </a>
         </Link>
+        <Link href="/week-8">
+          <a className="bg-orange-300 text-black font-bold py-3 px-6 rounded hover:text-orange-900 transition duration-200 mb-2">
+            Click here to see my Project part 8!
+          </a>
+        </Link>
       </div>
     </div>
   );
