@@ -110,7 +110,7 @@ async function fetchMealIdeas({ ingredient }) {
         const data = await response.json();
         return data.meals;
     } catch (error) {
-        console.error("Error:", error);
+        console.error("error:", error);
     }
 }
 
