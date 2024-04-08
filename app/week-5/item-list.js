@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import Item from './item'; // 
 import itemsData from './items.json'; 
@@ -6,7 +7,6 @@ const ItemList = () => {
   // Initialize state variables
   const [sortBy, setSortBy] = useState('name');
   const [groupByCategory, setGroupByCategory] = useState(false);
-
   // Sort and group the items based on state variables
   const sortedItems = [...itemsData].sort((a, b) => {
     if (groupByCategory) {
@@ -51,7 +51,7 @@ const ItemList = () => {
             <ul>
               {categoryItems.map(item => (
                 <li key={item.id}>
-                  <Item item={item} />
+                  <Item name={item.name} quantity={item.quantity} category={item.category} />
                 </li>
               ))}
             </ul>
@@ -59,7 +59,7 @@ const ItemList = () => {
         ))
       ) : (
         // Not Grouped
-        sortedItems.map(item => <Item key={item.id} item={item} />)
+        sortedItems.map(item => <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />)
       )}
     </div>
   );

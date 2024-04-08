@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import Item from './item';
 
@@ -20,13 +21,13 @@ const ItemList = ({ items, onItemSelect }) => {
   return (
     <div>
       {/* Sort and Group Buttons remain unchanged */}
-      <button onClick={() => setSortBy('name')} style={{ backgroundColor: nameButtonColor }}>
+      <button onClick={() => setSortBy('name')}>
         Sort by Name
       </button>
-      <button onClick={() => setSortBy('category')} style={{ backgroundColor: categoryButtonColor }}>
+      <button onClick={() => setSortBy('category')}>
         Sort by Category
       </button>
-      <button onClick={() => setGroupByCategory(!groupByCategory)} style={{ backgroundColor: groupByCategoryButtonColor }}>
+      <button onClick={() => setGroupByCategory(!groupByCategory)}>
         Group by Category
       </button>
 

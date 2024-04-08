@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from 'react';
 import Item from './item'; 
 
@@ -48,7 +49,7 @@ const ItemList = ({ items }) => {
             <ul>
               {categoryItems.map((item) => (
                 <li key={item.id}>
-                  <Item item={item} />
+                  <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
                 </li>
               ))}
             </ul>
@@ -56,7 +57,7 @@ const ItemList = ({ items }) => {
         ))
       ) : (
         // Not Grouped
-        sortedItems.map((item) => <Item key={item.id} item={item} />)
+        sortedItems.map((item) => <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />)
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 // Page.js
 
 import React from 'react';
-import ItemList from './ItemList';
+import ItemList from './item-list';
 
 const Page = () => {
   return (
