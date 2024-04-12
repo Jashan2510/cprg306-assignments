@@ -73,7 +73,9 @@ export default function NewItem() {
                 </select>
             </div>
 
-            <button type="submit" className="py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-800">
+            <button 
+            type="submit" 
+            className="py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-500">
                 Add Item
             </button>
         </form>

@@ -29,8 +29,8 @@ const MealIdeas = ({ ingredient }) => {
   }, [ingredient]); 
 
   return (
-    <div className="meal-ideas-container">
-      <h2>Meal Ideas for {ingredient}</h2>
+    <div className="meal-ideas-container  ">
+      <h2 className='text-xl font-bold m-2'>Meal Ideas for {ingredient}</h2>
       {meals && meals.length > 0 ? (
         <ul>
           {meals.map((meal) => (

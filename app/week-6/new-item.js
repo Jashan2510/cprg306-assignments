@@ -30,22 +30,22 @@ export default function NewItem({ onAddItem }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-900">Item Name</label>
+    
+    <form onSubmit={handleSubmit} className="space-y-3">
+      
+        <label htmlFor="name" className="block text-xl font-medium text-gray-900">Item Name</label>
         <input
           type="text"
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="mt-1 block w-full p-2 border border-gray-200 rounded-md shadow-sm"
+          className="flex-1 mt-8 p-2 border border-black rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter item name"
         />
-      </div>
 
       <div>
-        <label htmlFor="quantity" className="block text-sm font-medium text-gray-900">Quantity</label>
+        <label htmlFor="quantity" className="block text-xl font-medium text-gray-900">Quantity</label>
         <input
           type="number"
           id="quantity"
@@ -56,14 +56,25 @@ export default function NewItem({ onAddItem }) {
       </div>
 
       <div>
-        <label htmlFor="category" className="block text-sm font-medium text-gray-900">Category</label>
+        <label htmlFor="category" className="block text-xl font-medium text-gray-900">Category</label>
         <select
           id="category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="mt-1 block w-full p-2 border border-gray-200 rounded-md shadow-sm bg-white"
         >
-          {/* ...options */}
+          <option value="produce">Produce</option>
+            <option value="dairy">Dairy</option>
+            <option value="bakery">Bakery</option>
+            <option value="meat">Meat</option>
+            <option value="frozen">Frozen Foods</option>
+            <option value="canned">Canned Goods</option>
+            <option value="dry">Dry Goods</option>
+            <option value="beverages">Beverages</option>
+            <option value="snacks">Snacks</option>
+            <option value="household">Household</option>
+            <option value="other">Other</option>
+            
         </select>
       </div>
 

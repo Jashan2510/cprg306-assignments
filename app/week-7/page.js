@@ -19,14 +19,14 @@ const Page = () => {
   };
 
   return (
-    <div className="flex">
-      <div>
-        <h1>Shopping List App</h1>
+    <main className=" p-5 min-h-screen bg-red-300">
+      <div className="max-w-5xl mx-auto text-black">
+        <h1 className="text-4xl font-bold text-center text-blue-900">Shopping List App</h1>
         <NewItem onAddItem={handleAddItem} />
         <ItemList items={items} onItemSelect={handleItemSelect} />
       </div>
       <MealIdeas ingredient={selectedItemName} />
-    </div>
+    </main>
   );
 };
 

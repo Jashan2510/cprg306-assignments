@@ -1,31 +1,69 @@
-// Import necessary components and dependencies
 "use client";
 import React, { useState } from 'react';
-import NewItem from './new-item'; 
-import ItemList from './item-list'; 
-import itemsData from './items.json'; 
+import Item from './item';
 
-// Functional component Page
-const Page = () => {
-  // Initialize state variable with data from items.json
-  const [items, setItems] = useState(itemsData);
+const ItemList = ({ items, onItemSelect }) => {
+  // State initialization remains unchanged
+  const [sortBy, setSortBy] = useState('name');
+  const [groupByCategory, setGroupByCategory] = useState(false);
 
-  // Event handler function to add a new item to items
-  const handleAddItem = (newItem) => {
-    // Assuming newItem is an object with properties: id, name, quantity, and category
-    setItems((prevItems) => [...prevItems, newItem]);
-  };
+  // Sorting and grouping logic remains unchanged
+  const sortedItems = [...items].sort((a, b) => {
+    if (groupByCategory) {
+      return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
+    } else {
+      return sortBy === 'name' ? a.name.localeCompare(b.name) : a.category.localeCompare(b.category);
+    }
+  });
+// Create buttons to change the sorting and grouping preferences
+const nameButtonColor = sortBy === 'name' ? 'green' : 'white';
+const categoryButtonColor = sortBy === 'category' ? 'green' : 'white';
+const groupByCategoryButtonColor = groupByCategory ? 'green' : 'white';
+  
 
-  // Render function displaying NewItem and ItemList components
   return (
     <div>
-      <h1>Shopping List App</h1>
-      {/* Pass handleAddItem event handler to NewItem component */}
-      <NewItem onAddItem={handleAddItem} />
-      {/* Pass items state to ItemList component */}
-      <ItemList items={items} />
+      {/* Sort and Group Buttons remain unchanged */}
+      <button onClick={() => setSortBy('name')}className='px-4 py-2 text-black rounded hover:bg-orange-600 focus:outline-none'style={{ backgroundColor: nameButtonColor }}>
+        Sort by Name
+      </button>
+      <button onClick={() => setSortBy('category')}className='px-4 py-2  text-black rounded hover:bg-orange-600 focus:outline-none'style={{ backgroundColor: categoryButtonColor }}>
+        Sort by Category
+      </button>
+      <button onClick={() => setGroupByCategory(!groupByCategory)}className='px-4 py-2  text-black rounded hover:bg-orange-600 focus:outline-none'style={{ backgroundColor: groupByCategoryButtonColor }}>
+        Group by Category
+      </button>
+
+      {groupByCategory ? (
+        Object.entries(
+          sortedItems.reduce((acc, item) => {
+            const category = item.category;
+            acc[category] = [...(acc[category] || []), item];
+            return acc;
+          }, {})
+        ).map(([category, categoryItems]) => (
+          <div key={category}>
+            <h2 className="text-white text-2xl font-bold capitalize">{category}</h2>
+            <ul>
+              {categoryItems.map((item) => (
+                
+                <li key={item.id} onClick={() => onItemSelect(item.name)}>
+                  <Item {...item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      ) : (
+        sortedItems.map((item) => (
+          
+          <li key={item.id} onClick={() => onItemSelect(item.name)}>
+            <Item {...item} />
+          </li>
+        ))
+      )}
     </div>
   );
 };
 
-export default Page;
+export default ItemList;

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useUserAuth } from "./_utils/auth-context";
 
 const LandingPage = () => {
@@ -19,7 +20,7 @@ const LandingPage = () => {
           <p className="text-xl font-bold">Welcome, {user.displayName} ({user.email})</p>
           <div className="flex gap-4 text-center align-middle content-center justify-around">
           <button onClick={handleSignOut} className="bg-pink-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mt-4">Logout</button>
-          <a href="./week-10/shopping-list" className="text-pink-500 hover:underline mt-4">Go to Shopping List</a>
+          <a href="./week-10/shopping-List" className="text-pink-500 hover:underline mt-4">Go to Shopping List</a>
           </div>
         </div>
       ) : (

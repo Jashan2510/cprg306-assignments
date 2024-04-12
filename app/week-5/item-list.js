@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from 'react';
-import Item from './item'; // 
-import itemsData from './items.json'; 
+import Item from './item'; 
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   // Initialize state variables
   const [sortBy, setSortBy] = useState('name');
   const [groupByCategory, setGroupByCategory] = useState(false);
+
   // Sort and group the items based on state variables
-  const sortedItems = [...itemsData].sort((a, b) => {
+  const sortedItems = [...items].sort((a, b) => {
     if (groupByCategory) {
       return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
     } else {
@@ -24,19 +24,17 @@ const ItemList = () => {
   return (
     <div>
       {/* Sort Buttons */}
-      <button onClick={() => setSortBy('name')} style={{ backgroundColor: nameButtonColor }}>
+      <button onClick={() => setSortBy('name')} style={{ backgroundColor: nameButtonColor }}className='space-y-2 px-4 py-2 bg-orange-500 text-black  rounded hover:bg-orange-600 focus:outline-none space-y-2'>
         Sort by Name
       </button>
-      <button onClick={() => setSortBy('category')} style={{ backgroundColor: categoryButtonColor }}>
+      <button onClick={() => setSortBy('category')} style={{ backgroundColor: categoryButtonColor }}className='px-4 py-2 bg-orange-500 text-black rounded hover:bg-orange-600 focus:outline-none'>
         Sort by Category
       </button>
 
-      
-      <button onClick={() => setGroupByCategory(!groupByCategory)} style={{ backgroundColor: groupByCategoryButtonColor }}>
+      <button onClick={() => setGroupByCategory(!groupByCategory)} style={{ backgroundColor: groupByCategoryButtonColor }}className='px-4 py-2 bg-orange-500 text-black rounded hover:bg-orange-600 focus:outline-none'>
         Group by Category
       </button>
 
-     
       {groupByCategory ? (
         // Grouped by Category
         Object.entries(
@@ -47,11 +45,11 @@ const ItemList = () => {
           }, {})
         ).map(([category, categoryItems]) => (
           <div key={category}>
-            <h2 className="text-2xl font-bold capitalize">{category}</h2>
+            <h2 className="text-white text-2xl font-bold capitalize">{category}</h2>
             <ul>
-              {categoryItems.map(item => (
+              {categoryItems.map((item) => (
                 <li key={item.id}>
-                  <Item name={item.name} quantity={item.quantity} category={item.category} />
+                  <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />
                 </li>
               ))}
             </ul>
@@ -59,7 +57,7 @@ const ItemList = () => {
         ))
       ) : (
         // Not Grouped
-        sortedItems.map(item => <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />)
+        sortedItems.map((item) => <Item key={item.id} name={item.name} quantity={item.quantity} category={item.category} />)
       )}
     </div>
   );
