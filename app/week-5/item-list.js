@@ -8,13 +8,14 @@ const ItemList = ({ items }) => {
   const [groupByCategory, setGroupByCategory] = useState(false);
 
   // Sort and group the items based on state variables
-  const sortedItems = [...items].sort((a, b) => {
+  const sortedItems = [...(items || [])].sort((a, b) => {
     if (groupByCategory) {
       return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
     } else {
-      return sortBy === 'name' ? a.name.localeCompare(b.name) : a.category.localeCompare(b.category);
+      return a.name.localeCompare(b.name);
     }
   });
+  
 
   // Create buttons to change the sorting and grouping preferences
   const nameButtonColor = sortBy === 'name' ? 'green' : 'white';
